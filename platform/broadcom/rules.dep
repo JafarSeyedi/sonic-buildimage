@@ -22,5 +22,5 @@ include $(PLATFORM_PATH)/one-image.dep
 include $(PLATFORM_PATH)/one-pde-image.dep
 include $(PLATFORM_PATH)/raw-image.dep
 include $(PLATFORM_PATH)/libsaithrift-dev.dep
-include $(PLATFORM_PATH)/docker-syncd-brcm-dnx.dep
-include $(PLATFORM_PATH)/docker-syncd-brcm-dnx-rpc.dep
+# include $(PLATFORM_PATH)/docker-syncd-brcm-dnx.dep
+# include $(PLATFORM_PATH)/docker-syncd-brcm-dnx-rpc.dep
