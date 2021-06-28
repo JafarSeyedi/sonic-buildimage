@@ -160,7 +160,7 @@ run_pip_command()
 }
 
 ENABLE_VERSION_CONTROL_DEB=$(check_version_control "deb")
-ENABLE_VERSION_CONTROL_PY2=$(check_version_control "py2")
+# ENABLE_VERSION_CONTROL_PY2=$(check_version_control "py2")
 ENABLE_VERSION_CONTROL_PY3=$(check_version_control "py3")
 ENABLE_VERSION_CONTROL_WEB=$(check_version_control "web")
 ENABLE_VERSION_CONTROL_GIT=$(check_version_control "git")
