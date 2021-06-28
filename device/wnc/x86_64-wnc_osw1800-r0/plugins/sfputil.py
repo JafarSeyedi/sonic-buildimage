@@ -7,6 +7,9 @@ try:
     import time
     from sonic_sfp.sfputilbase import SfpUtilBase
     import sys
+    sys.path.append('/usr/lib/python3/dist-packages/sonic_sfp/')
+    sys.path.append('/usr/lib/python3.7/dist-packages/sonic_sfp/')
+    sys.path.append('/usr/lib/python3.5/dist-packages/sonic_sfp/')
     sys.path.append('/usr/lib/python2.7/dist-packages/sonic_sfp/')
     from sff8472 import sff8472InterfaceId
     from sff8472 import sff8472Dom
