@@ -212,7 +212,7 @@ class LedControl(LedControlBase):
 
             # Read back reply (e.g. command echo and drivshell>)
             sock.recv(1024)
-        except:
+        except BaseException:
             pass
         finally:
             del sock
@@ -240,7 +240,7 @@ class LedControl(LedControlBase):
         for i in range(0, 2):
             try:
                 speed = self.swss.get(self.swss.APPL_DB, port_name, 'speed')
-            except:
+            except BaseException:
                 self.fini_swsssdk()
                 if i > 0:
                     return None
@@ -254,14 +254,14 @@ class LedControl(LedControlBase):
         try:
             self.swss = swsssdk.SonicV2Connector()
             self.swss.connect(self.swss.APPL_DB)
-        except:
+        except BaseException:
             self.swss = None
 
     def fini_swsssdk(self):
         try:
             self.swss.close(self.swss.APPL_DB)
             del self.swss
-        except:
+        except BaseException:
             return
         finally:
             self.swss = None
@@ -275,7 +275,7 @@ class LedControl(LedControlBase):
                 sock = socket.socket(socket.AF_UNIX)
                 sock.settimeout(1)
                 sock.connect(self.SYNCD_SOCK_PATH)
-            except:
+            except BaseException:
                 if not wait_for_sock:
                     return False
                 while not os.path.exists(self.SYNCD_SOCK_PATH):
@@ -286,13 +286,13 @@ class LedControl(LedControlBase):
                         setreg = self.get_port_setreg(port_num, self.LED_COLOR_OFF)
                         sock.sendall(setreg)
                         sock.recv(1024)
-                except:
+                except BaseException:
                     pass
                 else:
                     return True
-            finally:
+            #finally:
                 # Do this explicitly to ensure we close soket before retry
-                del sock
+                #del sock
 
     # Initialize with color or turn off status LED
     # optionally waiting indefinitely for hardware monitor (hwmon) sysfs path
@@ -301,7 +301,7 @@ class LedControl(LedControlBase):
             try:
                 with open(self.SYSTEM_LED_PATH, 'w') as f:
                     f.write(str(color))
-            except:
+            except BaseException:
                 if not wait_for_hwmon:
                     return False
                 while not os.path.exists(self.SYSTEM_LED_PATH):

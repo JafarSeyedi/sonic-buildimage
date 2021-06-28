@@ -4,8 +4,7 @@
 #
 
 try:
-    import time
-    from sonic_sfp.sfputilbase import SfpUtilBase
+     from sonic_sfp.sfputilbase import SfpUtilBase
 except ImportError as e:
     raise ImportError("%s - required module not found" % str(e))
 
